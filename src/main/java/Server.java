@@ -31,10 +31,22 @@ public class Server {
     }
 
     public void leggi(){
-
+        try{
+            recivedData = inputReader.readLine();
+            System.out.println("Ricevuto dal cliente" + recivedData);
+        } catch (IOException e) {
+            System.err.println("Errore durante la lettura dei dati dal cliente");
+        }
+        return recivedData;
     }
 
-    public void scrivi(){
+    public void scrivi(String messaggio){
+        try{
+            outputWriter.println(messaggio);
+            System.out.printlln(" Inviato al client" + messaggio);
+        } catch (IOException e){
+            System.out.println(" Errore durante la fase di scrittura");
+        }
 
     }
 
