@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 
 public class Client {
@@ -41,14 +42,15 @@ public class Client {
         if(socket!=null){
             try {
                 socket.close();
-                System.out.println("4)Chiusura della connessione con il server");
+                System.out.println("Chiusura della connessione con il server");
             } catch (IOException e) {
                 System.err.println("errore nella chiusura del client");
             }
         }
     }
+    public void termina() {
 
- 
 
+    }
    
 }
