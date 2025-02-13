@@ -1,8 +1,12 @@
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 
 public class Server {
     ServerSocket serverSocket;
@@ -13,13 +17,12 @@ public class Server {
         this.porta = porta;
         try {
             serverSocket = new ServerSocket(porta);
-            System.out.println("1 Server in ascolto sulla porta " + porta);
+            System.out.println("Server in ascolto sulla porta " + porta);
         } catch (IOException e) {
             System.err.println("Errore del server nella fase di binding");
         }
     }
-
-    public Socket attendi(){
+    public void attendi(){
 
         try {
             clientSocket = serverSocket.accept();
@@ -27,26 +30,32 @@ public class Server {
         } catch (IOException e) {
             System.err.println("Problemi di connessione con il client");
         }
-        return clientSocket;
     }
 
     public void leggi(){
         try{
-            recivedData = inputReader.readLine();
-            System.out.println("Ricevuto dal cliente" + recivedData);
+            BufferedReader inputReader = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
+            String receivedData = inputReader.readLine();
+            System.out.println("Ricevuto dal cliente" + receivedData);
         } catch (IOException e) {
             System.err.println("Errore durante la lettura dei dati dal cliente");
         }
-        return recivedData;
+
     }
 
-    public void scrivi(String messaggio){
-        try{
-            outputWriter.println(messaggio);
-            System.out.printlln(" Inviato al client" + messaggio);
-        } catch (IOException e){
-            System.out.println(" Errore durante la fase di scrittura");
+    public void scrivi(String messaggio) {
+        OutputStream os;
+        PrintWriter pw;
+        String s;
+
+        try {
+            os = clientSocket.getOutputStream();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        PrintWriter streamOut = new PrintWriter(os);
+
+
 
     }
 
