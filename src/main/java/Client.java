@@ -29,15 +29,25 @@ public class Client {
             System.err.println("Errone nella fase di connessione");
         }
     }
-
-    public void leggi(){
-
+      public String leggi() {
+        try {
+            return in.readLine();
+        } catch (IOException e) {
+            System.err.println("Errore lettura");
+            return null;
+        }
     }
 
-    public void scrivi(){
-
+    public void scrivi(String messaggio) {
+        try {
+            out.write(messaggioColorato);
+            out.newLine();
+            out.flush();
+        } catch (IOException e) {
+            System.err.println("Errore scrittura messaggio");
+        }
     }
-
+   
     public void chiudi(){
         if(socket!=null){
             try {
