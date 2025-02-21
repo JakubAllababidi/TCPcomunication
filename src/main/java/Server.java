@@ -68,8 +68,13 @@ public class Server {
         }
     }
 
-    public void termina(){
-
+     public void termina(){
+        try {
+            serverSocket.close();
+            System.out.println("Server terminato");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 }
-
