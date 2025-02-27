@@ -35,15 +35,15 @@ public class Server {
     public void leggi(){
         try{
             BufferedReader inputReader = new BufferedReader( new InputStreamReader(clientSocket.getInputStream()));
-            String receivedData = inputReader.readLine();
-            System.out.println("Ricevuto dal cliente" + receivedData);
+            String datoRicevuto = inputReader.readLine();
+            System.out.println("Ricevuto dal cliente" + datoRicevuto);
         } catch (IOException e) {
             System.err.println("Errore durante la lettura dei dati dal cliente");
         }
 
     }
 
-    public void scrivi(String messaggio) {
+    public void scrivi() {
         OutputStream os;
         PrintWriter pw;
         String s;
@@ -68,13 +68,13 @@ public class Server {
         }
     }
 
-     public void termina(){
+    public void termina(){
         try {
             serverSocket.close();
             System.out.println("Server terminato");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
     }
 }
