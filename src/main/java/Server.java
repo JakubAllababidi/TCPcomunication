@@ -50,10 +50,14 @@ public class Server {
 
         try {
             os = clientSocket.getOutputStream();
+            PrintWriter streamOut = new PrintWriter(os ,true);
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+             s = br.readLine();
+            streamOut.println(s);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        PrintWriter streamOut = new PrintWriter(os);
+
 
 
 
