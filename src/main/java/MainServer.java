@@ -12,6 +12,7 @@ public class MainServer {
          Server s1 = new Server(1024);
          s1.attendi();
          s1.leggi();
+         s1.scrivi();
          s1.chiudi();
          s1.termina();
    
