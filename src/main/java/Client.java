@@ -37,7 +37,7 @@ public class Client {
             //leggere la riga
             String s = br.readLine();
             //stamparla a monitor
-            System.out.println("Messaggio del server");
+            System.out.println("Messaggio del server" + s);
         } catch (IOException e) {
           System.err.println("errore nella fase di lettura");
         }
@@ -64,9 +64,6 @@ public class Client {
             }
         }
     }
-    public void termina() {
 
-
-    }
 
 }
